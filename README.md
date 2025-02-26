@@ -5,16 +5,21 @@
 
 A desktop application that helps manage screen time using the 20-20-20 rule and hourly breaks, with system tray integration and usage history tracking.
 
-![Application Screenshot](screenshot.png) ## Features
+![Application Screenshot](https://raw.githubusercontent.com/memotiur/BlinkReminder/refs/heads/main/screenshots/screentime.png) ## Features
 
-- 🕒 Dual Timers:
-  - 20-20-20 Rule Timer (20 minutes interval)
-  - Hourly Break Timer (60 minutes interval)
-- 🔔 Alert with Fade Animations
-- 📊 7-Day Usage History Tracking
-- ⚙️ Adjustable Timer Settings
-- 📁 Automatic History File Management
-- 🖥️ System Tray Integration
+🕒 Dual Timers:
+20-20-20 Rule Timer (every 20 minutes)
+Hourly Break Timer (every 60 minutes)
+🔔 Custom Alerts:
+Optional screen dimming for 20 seconds
+📊 7-Day Usage History:
+Tracks and displays screen time history
+⚙️ Customizable Timers:
+Adjustable intervals for both timers
+📁 History Management:
+Automatically saves and cleans up history files
+🖥️ System Tray Support:
+Minimizes to tray for easy access
 
 ## Installation
 
