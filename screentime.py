@@ -19,7 +19,7 @@ class ScreenTimeReminderApp:
         self.root.configure(bg="#ffffff")
         self.root.protocol("WM_DELETE_WINDOW", self.minimize_to_tray)
 
-        # Modern color scheme
+        #  color scheme
         self.colors = {
             "primary": "#2A5C82",
             "secondary": "#5E88B3",
