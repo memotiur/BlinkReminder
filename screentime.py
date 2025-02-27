@@ -14,12 +14,12 @@ HISTORY_FILE = "screen_time_history.txt"
 class ScreenTimeReminderApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Screen Time Manager")
+        self.root.title("Blink Reminder")
         self.root.geometry("400x750")
         self.root.configure(bg="#ffffff")
         self.root.protocol("WM_DELETE_WINDOW", self.minimize_to_tray)
 
-        # Modern color scheme
+        # Color scheme
         self.colors = {
             "primary": "#2A5C82",
             "secondary": "#5E88B3",
@@ -48,37 +48,37 @@ class ScreenTimeReminderApp:
         
         style.configure("TFrame", background=self.colors["background"])
         style.configure("Card.TFrame", 
-                      background=self.colors["card"],
-                      borderwidth=1,
-                      relief="solid",
-                      bordercolor="#E2E8F0")
+                        background=self.colors["card"],
+                        borderwidth=1,
+                        relief="solid",
+                        bordercolor="#E2E8F0")
         
         style.configure("TLabel",
-                      font=("Segoe UI", 10),
-                      background=self.colors["background"],
-                      foreground=self.colors["text"])
+                        font=("Segoe UI", 10),
+                        background=self.colors["background"],
+                        foreground=self.colors["text"])
         
         style.configure("Header.TLabel",
-                      font=("Segoe UI", 12, "bold"),
-                      foreground=self.colors["primary"])
+                        font=("Segoe UI", 12, "bold"),
+                        foreground=self.colors["primary"])
         
         style.configure("Primary.TButton",
-                      font=("Segoe UI", 10, "bold"),
-                      foreground="#ffffff",
-                      background=self.colors["primary"],
-                      borderwidth=0,
-                      padding=10)
+                        font=("Segoe UI", 10, "bold"),
+                        foreground="#ffffff",
+                        background=self.colors["primary"],
+                        borderwidth=0,
+                        padding=10)
         
         style.map("Primary.TButton",
-                 background=[("active", self.colors["secondary"]), ("disabled", "#CBD5E0")])
+                  background=[("active", self.colors["secondary"]), ("disabled", "#CBD5E0")])
         
         style.configure("Secondary.TButton",
-                       font=("Segoe UI", 10),
-                       foreground=self.colors["primary"],
-                       background=self.colors["card"],
-                       borderwidth=1,
-                       relief="solid",
-                       padding=8)
+                        font=("Segoe UI", 10),
+                        foreground=self.colors["primary"],
+                        background=self.colors["card"],
+                        borderwidth=1,
+                        relief="solid",
+                        padding=8)
 
     def create_widgets(self):
         main_frame = ttk.Frame(self.root, padding=20)
@@ -88,15 +88,15 @@ class ScreenTimeReminderApp:
         header_frame = ttk.Frame(main_frame)
         header_frame.pack(pady=10, fill=tk.X)
         ttk.Label(header_frame, 
-                text="SCREEN TIME MANAGER",
-                style="Header.TLabel").pack(side=tk.LEFT)
+                  text="BLINK REMINDER",
+                  style="Header.TLabel").pack(side=tk.LEFT)
 
         # Question Icon for Instructions
         question_button = ttk.Button(header_frame,
-                                   text="?",
-                                   command=self.show_instructions,
-                                   width=2,
-                                   style="Secondary.TButton")
+                                     text="?",
+                                     command=self.show_instructions,
+                                     width=2,
+                                     style="Secondary.TButton")
         question_button.pack(side=tk.RIGHT)
 
         # Timer Section
@@ -105,51 +105,51 @@ class ScreenTimeReminderApp:
 
         # 20-20-20 Rule Section
         ttk.Label(timer_frame, 
-                text="20-20-20 Rule Timer",
-                font=("Segoe UI", 10, "bold"),
-                foreground=self.colors["accent"]).pack(anchor=tk.W)
+                  text="20-20-20 Rule Timer",
+                  font=("Segoe UI", 10, "bold"),
+                  foreground=self.colors["accent"]).pack(anchor=tk.W)
         self.twenty_time = ttk.Label(timer_frame, 
-                                   text="20:00", 
-                                   font=("Segoe UI", 24, "bold"),
-                                   foreground=self.colors["primary"])
+                                     text="20:00", 
+                                     font=("Segoe UI", 24, "bold"),
+                                     foreground=self.colors["primary"])
         self.twenty_time.pack(pady=5)
         ttk.Label(timer_frame, 
-                text="Look at something 20 feet away for 20 seconds",
-                font=("Segoe UI", 9),
-                foreground=self.colors["accent"]).pack()
+                  text="Look at something 20 feet away for 20 seconds",
+                  font=("Segoe UI", 9),
+                  foreground=self.colors["accent"]).pack()
 
         ttk.Separator(timer_frame, orient='horizontal').pack(fill=tk.X, pady=15)
 
         # Hourly Break Section
         ttk.Label(timer_frame, 
-                text="Hourly Break Timer",
-                font=("Segoe UI", 10, "bold"),
-                foreground=self.colors["accent"]).pack(anchor=tk.W)
+                  text="Hourly Break Timer",
+                  font=("Segoe UI", 10, "bold"),
+                  foreground=self.colors["accent"]).pack(anchor=tk.W)
         self.hourly_time = ttk.Label(timer_frame, 
-                                   text="60:00", 
-                                   font=("Segoe UI", 24, "bold"),
-                                   foreground=self.colors["primary"])
+                                     text="60:00", 
+                                     font=("Segoe UI", 24, "bold"),
+                                     foreground=self.colors["primary"])
         self.hourly_time.pack(pady=5)
         ttk.Label(timer_frame, 
-                text="Take a 5-minute break from your screen",
-                font=("Segoe UI", 9),
-                foreground=self.colors["accent"]).pack()
+                  text="Take a 5-minute break from your screen",
+                  font=("Segoe UI", 9),
+                  foreground=self.colors["accent"]).pack()
 
         # Control Buttons
         control_frame = ttk.Frame(main_frame, padding=10)
         control_frame.pack(pady=10, fill=tk.X)
 
         self.start_button = ttk.Button(control_frame, 
-                                     text="Start Session", 
-                                     command=self.start_reminders,
-                                     style="Primary.TButton")
+                                       text="Start Session", 
+                                       command=self.start_reminders,
+                                       style="Primary.TButton")
         self.start_button.pack(side=tk.LEFT, expand=True, padx=5)
 
         self.stop_button = ttk.Button(control_frame, 
-                                    text="Pause", 
-                                    command=self.stop_reminders,
-                                    state=tk.DISABLED,
-                                    style="Secondary.TButton")
+                                      text="Pause", 
+                                      command=self.stop_reminders,
+                                      state=tk.DISABLED,
+                                      style="Secondary.TButton")
         self.stop_button.pack(side=tk.LEFT, expand=True, padx=5)
 
         # Settings Panel
@@ -157,36 +157,36 @@ class ScreenTimeReminderApp:
         settings_frame.pack(pady=10, fill=tk.X)
 
         ttk.Label(settings_frame, 
-                text="TIMER SETTINGS",
-                style="Header.TLabel").pack(anchor=tk.W)
+                  text="TIMER SETTINGS",
+                  style="Header.TLabel").pack(anchor=tk.W)
 
         input_frame = ttk.Frame(settings_frame)
         input_frame.pack(pady=10, fill=tk.X)
 
         ttk.Label(input_frame, 
-                text="20-20-20 Interval (minutes):").grid(row=0, column=0, sticky=tk.W, pady=5)
+                  text="20-20-20 Interval (minutes):").grid(row=0, column=0, sticky=tk.W, pady=5)
         self.twenty_entry = ttk.Entry(input_frame, width=8, justify='center')
         self.twenty_entry.insert(0, "20")
         self.twenty_entry.configure(state='normal')  # Ensure it's editable
         self.twenty_entry.grid(row=0, column=1, padx=5, pady=5, sticky=tk.E)
 
         ttk.Label(input_frame, 
-                text="Break Interval (minutes):").grid(row=1, column=0, sticky=tk.W, pady=5)
+                  text="Break Interval (minutes):").grid(row=1, column=0, sticky=tk.W, pady=5)
         self.one_hour_entry = ttk.Entry(input_frame, width=8, justify='center')
         self.one_hour_entry.insert(0, "60")
         self.one_hour_entry.configure(state='normal')  # Ensure it's editable
         self.one_hour_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.E)
 
         ttk.Button(settings_frame, 
-                 text="Save Settings",
-                 command=self.save_settings,
-                 style="Primary.TButton").pack(pady=10)
+                   text="Save Settings",
+                   command=self.save_settings,
+                   style="Primary.TButton").pack(pady=10)
 
         # History Button
         ttk.Button(main_frame, 
-                 text="View 7-Day Usage History",
-                 command=self.show_history,
-                 style="Secondary.TButton").pack(pady=10)
+                   text="View 7-Day Usage History",
+                   command=self.show_history,
+                   style="Secondary.TButton").pack(pady=10)
 
     def show_instructions(self):
         messagebox.showinfo(
@@ -238,23 +238,27 @@ class ScreenTimeReminderApp:
         if not self.running:
             return
 
-        if self.twenty_min_countdown <= 0:
-            alert = TwentyTwentyAlert(self.root,
-                                    "20-20-20 Rule Reminder",
-                                    "Time to follow the 20-20-20 rule:\nLook at something 20 feet away for 20 seconds!")
-            alert.grab_set()
-            self.twenty_min_countdown = self.twenty_min_timer
-            self.stop_reminders()
-            return
-
+        # Check if hourly break takes precedence (reset 20-20-20 if hourly break occurs)
         if self.one_hour_countdown <= 0:
             self.show_custom_alert(
                 "Hourly Break Reminder",
                 "Time for a 5-minute break!\nSuggestions:\n- Stretch your body\n- Walk around\n- Hydrate yourself"
             )
             self.one_hour_countdown = self.one_hour_timer
-            self.stop_reminders()
+            self.twenty_min_countdown = self.twenty_min_timer  # Reset 20-20-20 timer after hourly break
+            self.stop_reminders()  # Pause timers
+            self.root.after(1000, self.start_reminders)  # Restart after a brief delay
             return
+
+        # Only show 20-20-20 reminder if hourly break isn’t imminent or active
+        if self.twenty_min_countdown <= 0 and self.one_hour_countdown > 5:  # Avoid overlap with hourly break
+            alert = TwentyTwentyAlert(self,
+                                      "20-20-20 Rule Reminder",
+                                      "Time to follow the 20-20-20 rule:\nLook at something 20 feet away for 20 seconds!")
+            alert.grab_set()
+            self.twenty_min_countdown = self.twenty_min_timer
+            self.stop_reminders()  # Pause timers
+            return  # Restart handled by TwentyTwentyAlert’s buttons
 
         self.twenty_min_countdown -= 1
         self.one_hour_countdown -= 1
@@ -327,7 +331,7 @@ class ScreenTimeReminderApp:
         history_text = "Last 7 Days Screen Time:\n\n"
         
         dates = [(datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d") 
-                for i in range(6, -1, -1)]
+                 for i in range(6, -1, -1)]
         
         for date in dates:
             minutes = self.history.get(date, 0)
@@ -338,7 +342,7 @@ class ScreenTimeReminderApp:
     def minimize_to_tray(self):
         self.root.withdraw()
         menu = (item('Show', self.show_window), item('Exit', self.exit_app))
-        icon = Icon("ScreenTimeReminder", self.create_icon(), menu=menu)
+        icon = Icon("BlinkReminder", self.create_icon(), menu=menu)
         threading.Thread(target=icon.run, daemon=True).start()
 
     def show_window(self, icon, item):
@@ -370,15 +374,15 @@ class CustomAlert(tk.Toplevel):
         self.attributes("-alpha", self.alpha)
         
         ttk.Label(self, 
-                text=message,
-                font=("Segoe UI", 12),
-                wraplength=380,
-                background="#ffffff").pack(pady=20, padx=20)
+                  text=message,
+                  font=("Segoe UI", 12),
+                  wraplength=380,
+                  background="#ffffff").pack(pady=20, padx=20)
         
         ttk.Button(self, 
-                 text="OK", 
-                 command=self.destroy_alert,
-                 style="Primary.TButton").pack(pady=10)
+                   text="OK", 
+                   command=self.destroy_alert,
+                   style="Primary.TButton").pack(pady=10)
         
         self.start_fade_in()
 
@@ -393,10 +397,11 @@ class CustomAlert(tk.Toplevel):
     def destroy_alert(self):
         self.destroy()
 
+
 class TwentyTwentyAlert(tk.Toplevel):
-    def __init__(self, parent, title, message):
-        super().__init__(parent)
-        self.parent = parent
+    def __init__(self, app, title, message):
+        super().__init__(app.root)
+        self.app = app
         self.title(title)
         self.geometry("400x250+500+300")
         self.configure(bg="#ffffff")
@@ -407,25 +412,29 @@ class TwentyTwentyAlert(tk.Toplevel):
         self.attributes("-alpha", self.alpha)
         
         ttk.Label(self,
-                 text=message,
-                 font=("Segoe UI", 12),
-                 wraplength=380,
-                 background="#ffffff").pack(pady=20, padx=20)
+                  text=message,
+                  font=("Segoe UI", 12),
+                  wraplength=380,
+                  background="#ffffff").pack(pady=20, padx=20)
         
         button_frame = ttk.Frame(self)
         button_frame.pack(pady=10)
         
         ttk.Button(button_frame,
-                  text="OK",
-                  command=self.destroy_alert,
-                  style="Primary.TButton").pack(side=tk.LEFT, padx=5)
+                   text="OK",
+                   command=self.ok_and_restart,
+                   style="Primary.TButton").pack(side=tk.LEFT, padx=5)
         
         ttk.Button(button_frame,
-                  text="Dim Screen",
-                  command=self.dim_and_destroy,
-                  style="Secondary.TButton").pack(side=tk.LEFT, padx=5)
+                   text="Dim Screen",
+                   command=self.dim_and_destroy,
+                   style="Secondary.TButton").pack(side=tk.LEFT, padx=5)
         
         self.start_fade_in()
+
+    def ok_and_restart(self):
+        self.destroy()
+        self.app.root.after(1000, self.app.start_reminders)  # Restart reminders after OK
 
     def start_fade_in(self):
         if self.alpha < 1.0:
@@ -433,30 +442,26 @@ class TwentyTwentyAlert(tk.Toplevel):
             self.attributes("-alpha", self.alpha)
             self.after(50, self.start_fade_in)
         else:
-            self.after(30000, self.destroy_alert)
+            self.after(30000, self.destroy_alert)  # Fixed missing parenthesis
 
     def dim_and_destroy(self):
-        # First destroy the alert dialog
         self.destroy()
         
-        # Create a semi-transparent overlay
-        overlay = tk.Toplevel(self.parent)
+        overlay = tk.Toplevel(self.app.root)
         overlay.attributes('-fullscreen', True)
         overlay.attributes('-alpha', 0.7)
         overlay.configure(bg='gray')
         overlay.attributes('-topmost', True)
         
-        # Add countdown label
         countdown = tk.StringVar()
         countdown.set("Time remaining: 20 seconds")
         countdown_label = ttk.Label(overlay,
-                                  textvariable=countdown,
-                                  font=("Segoe UI", 20, "bold"),
-                                  foreground="white",
-                                  background="gray")
+                                    textvariable=countdown,
+                                    font=("Segoe UI", 20, "bold"),
+                                    foreground="white",
+                                    background="gray")
         countdown_label.place(relx=0.5, rely=0.5, anchor="center")
         
-        # Start countdown
         self.update_countdown(countdown, overlay, 20)
 
     def update_countdown(self, countdown_var, overlay, seconds):
@@ -465,9 +470,12 @@ class TwentyTwentyAlert(tk.Toplevel):
             overlay.after(1000, lambda: self.update_countdown(countdown_var, overlay, seconds - 1))
         else:
             overlay.destroy()
+            self.app.root.after(1000, self.app.start_reminders)  # Restart reminders after dimming
 
     def destroy_alert(self):
         self.destroy()
+        self.app.root.after(1000, self.app.start_reminders)  # Restart reminders if alert times out
+
 
 if __name__ == "__main__":
     root = tk.Tk()
